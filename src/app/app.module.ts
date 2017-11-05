@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AuthServiceProvider } from "../providers/auth-service/auth-service";
+import { OkuYolcuServiceProvider} from "../providers/other-services/okuYolcu-service";
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage }  from '../pages/login/login';
@@ -47,6 +48,7 @@ import { HttpModule} from "@angular/http";
     StatusBar,
     SplashScreen,
     AuthServiceProvider,
+    OkuYolcuServiceProvider,
     AuthHttp,
     provideAuth({
       headerName: 'Authorization',

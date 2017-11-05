@@ -5,7 +5,7 @@ import {Observable}     from 'rxjs/Observable';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map'
 
-//let apiUrl = "http://www.ozelcozum.net/api/authenticate/";
+let apiUrl = "http://localhost:8080/api/";
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -34,8 +34,8 @@ export class AuthServiceProvider {
     const headerObj = {
       headers: new Headers(headerDict),
     };
-
-    return this.http.post('http://localhost:8080/api/authenticate', body, headerObj).map(this.extractData).catch(this.handleError);
+debugger;
+    return this.http.post(apiUrl+type, body, headerObj).map(this.extractData).catch(this.handleError);
   }
 
   getSecuredData():any {

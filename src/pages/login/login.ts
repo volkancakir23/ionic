@@ -20,7 +20,7 @@ import { HomePage } from "../home/home";
 export class LoginPage {
 
   resposeData : any;
-  userData= {"username":"","password":"","rememberMe":"true"};
+  userData= {"username":"admin","password":"admin","rememberMe":"true"};
 
   constructor(public navCtrl: NavController, public authServiceProvider: AuthServiceProvider,
               public alertCtrl:AlertController,
@@ -37,9 +37,9 @@ export class LoginPage {
     });
 
     loading.present();
-
+debugger;
     //this.authServiceProvider.postData(this.userData,"login");
-    this.authServiceProvider.postData(this.userData,"login").subscribe(token => {
+    this.authServiceProvider.postData(this.userData,"authenticate").subscribe(token => {
       loading.dismiss();
 
       // If the user credentials are valid, the current user is redirected to the home page.
