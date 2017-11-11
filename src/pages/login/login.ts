@@ -37,14 +37,15 @@ export class LoginPage {
     });
 
     loading.present();
-debugger;
     //this.authServiceProvider.postData(this.userData,"login");
-    this.authServiceProvider.postData(this.userData,"authenticate").subscribe(token => {
+    this.authServiceProvider.postData(this.userData,"authenticate").subscribe(resp => {
       loading.dismiss();
 
       // If the user credentials are valid, the current user is redirected to the home page.
-      if (token && token != 'undefined' && token != 'No user found') {
-        localStorage.setItem('id_token', token.id_token);
+      if (resp && resp != 'undefined' && resp != 'No user found') {
+        localStorage.setItem('id_token', resp.token.id_token);
+        localStorage.setItem('firstName', resp.user.firstName);
+        localStorage.setItem('lastName', resp.user.lastName);
         //localStorage.setItem('user_login', user_login);
         //this.goToHomePage();
         //this.navCtrl.push(HomePage);

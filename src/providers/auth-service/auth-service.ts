@@ -34,12 +34,11 @@ export class AuthServiceProvider {
     const headerObj = {
       headers: new Headers(headerDict),
     };
-debugger;
+
     return this.http.post(apiUrl+type, body, headerObj).map(this.extractData).catch(this.handleError);
   }
 
   getSecuredData():any {
-    debugger;
     let jwt = localStorage.getItem('id_token');
     let authHeader = new Headers();
 
@@ -55,7 +54,6 @@ debugger;
   }
 
   private extractData(res:Response) {
-    debugger;
     let body = res.json();
     return body || {};
   }

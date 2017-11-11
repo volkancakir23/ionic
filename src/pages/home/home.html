@@ -7,14 +7,24 @@
 
 <ion-content class="home">
   <ion-list>
-    <ion-list-header>Sefer Listesi</ion-list-header>
+    <ion-list-header style="color: #0092FF; font-weight:bold; font-size:120%;">{{firstName}} {{lastName}}</ion-list-header>
+    <ion-item>
+      <ion-label>Sefer Seçimi</ion-label>
+      <ion-select [(ngModel)]="gender" (ionChange)="abrirLocal($event)">
+        <ion-option value="SABAH" selected>Sabah</ion-option>
+        <ion-option value="AKSAM">Akşam</ion-option>
+        <ion-option value="DIGER">Diğer</ion-option>
+      </ion-select>
+    </ion-item>
     <ion-item-group reorder="false" (ionItemReorder)="$event.applyTo(items)">
       <ion-item *ngFor="let item of items">
         <ion-label>{{item.ogrenci.isim}}</ion-label>
-        <ion-toggle [(ngModel)]=item.bindiMi></ion-toggle>
+        <ion-toggle primary [(ngModel)]=item.ulastiMi (ionChange)=onUpdateToggle(item)></ion-toggle>
+        <ion-toggle primary [(ngModel)]=item.bindiMi (ionChange)=onUpdateToggle(item)></ion-toggle>
       </ion-item>
     </ion-item-group>
   </ion-list>
   <button ion-button color="primary" (click)="logout()">Logot</button>
 
 </ion-content>
+

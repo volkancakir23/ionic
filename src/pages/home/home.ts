@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 import {OkuYolcuServiceProvider} from "../../providers/other-services/okuYolcu-service";
 
@@ -9,25 +9,37 @@ import {OkuYolcuServiceProvider} from "../../providers/other-services/okuYolcu-s
 export class HomePage {
   getData:string;
   public items:any;
-
-  public dataDetails : any;
+  public headers:any;
   userPostData = {"user_id":"","token":""};
 
+  @Output('firstName') firstName : string =localStorage.getItem('firstName');
+  @Output('lastName') lastName : string = localStorage.getItem('lastName');
+
+  public servisBoxSelect:"SABAH";
   messageList = [];
+  messages: string[]=  [];
 
   constructor(public navCtrl: NavController, public app: App,
               private okuYolcuServiceProvider : OkuYolcuServiceProvider) {
     console.log("->>>",localStorage);
     //const data = JSON.parse(localStorage.getItem('userData'));
     //this.userDetails=data.userData;
-    this.getOkuYolcu();
+    this.getOkuYolcu("SABAH");
   }
 
-  getOkuYolcu(){
-    this.okuYolcuServiceProvider.getOkuYolcu().subscribe(data =>this.items=data,
+  getOkuYolcu(servisBoxSelected){
+    this.okuYolcuServiceProvider.getOkuYolcu(servisBoxSelected).subscribe(data =>this.items=data,
       error => alert(error),
       () =>console.log("Finish"));
-    debugger;
+  }
+
+  onUpdateToggle(item) {
+    this.okuYolcuServiceProvider.putOkuYolcu(item);
+  }
+
+  abrirLocal(gender) {
+    this.servisBoxSelect=gender;
+    this.getOkuYolcu(gender);
   }
 
   logout() {
