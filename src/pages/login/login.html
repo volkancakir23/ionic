@@ -1,18 +1,20 @@
-
-<ion-content padding>
-  <ion-list>
-
-    <ion-item>
-      <ion-label fixed>Username</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="userData.username"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label fixed>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
-    </ion-item>
-
-    <button ion-button block color="primary" (click)="login()">Login</button>
-
-  </ion-list>
+<ion-content class="background">
+  <ion-card>
+    <ion-card-header>
+      Kullanıcı Giriş
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-line>
+        <ion-item>
+          <ion-input type="text" placeholder="Kullanıcı Adı" value="" [(ngModel)]="userData.username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" placeholder="Parola" [(ngModel)]="userData.password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <a>Giriş bilgilerinizi mi unuttunuz? <b>Oturum açmak için yardım alın</b></a>
+      <button ion-button block outline color="light" (click)="login()">Oturum Aç</button>
+    </ion-card-content>
+  </ion-card>
+  <button class="bottom" ion-button clear full color="light">Hesabınız yok mu? Kaydol</button>
 </ion-content>
