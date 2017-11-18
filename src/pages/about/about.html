@@ -1,11 +1,33 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Öğretmen
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-item>
+    <ion-label>Sefer Seçimi</ion-label>
+    <ion-select [(ngModel)]="gender" (ionChange)="abrirLocal($event)">
+      <ion-option value="SABAH" selected>Sabah</ion-option>
+      <ion-option value="AKSAM">Akşam</ion-option>
+      <ion-option value="DIGER">Diğer</ion-option>
+    </ion-select>
+  </ion-item>
 
+  <ion-item>
+    <ion-label>Araç Seçimi</ion-label>
+    <ion-select [(ngModel)]="result" (ionChange)="seferSec($event)">
+      <ion-option *ngFor="let item of plakas" value="{{item[0]}}">{{item[1]}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item-group reorder="false" (ionItemReorder)="$event.applyTo(items)">
+    <ion-item *ngFor="let item of items">
+      <ion-label>{{item.ogrenci.isim}}</ion-label>
+      <ion-toggle primary [(ngModel)]=item.ulastiMi (ionChange)=onUpdateToggle(item)></ion-toggle>
+      <ion-checkbox [(ngModel)]="item.bindiMi" disabled="true"></ion-checkbox>
+    </ion-item>
+  </ion-item-group>
 </ion-content>

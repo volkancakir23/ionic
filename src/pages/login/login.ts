@@ -3,6 +3,7 @@ import { IonicPage, NavController, AlertController, LoadingController } from 'io
 import { AuthServiceProvider} from "../../providers/auth-service/auth-service";
 import {TabsPage} from "../tabs/tabs";
 import { HomePage } from "../home/home";
+import {AboutPage} from "../about/about";
 
 /**
  * Generated class for the LoginPage page.
@@ -46,10 +47,17 @@ export class LoginPage {
         localStorage.setItem('id_token', resp.token.id_token);
         localStorage.setItem('firstName', resp.user.firstName);
         localStorage.setItem('lastName', resp.user.lastName);
+        localStorage.setItem('okuPersonel', resp.okuPersonel);
+        localStorage.setItem('okuSofor', resp.okuSofor);
         //localStorage.setItem('user_login', user_login);
         //this.goToHomePage();
         //this.navCtrl.push(HomePage);
-        this.navCtrl.push(TabsPage);
+        debugger;
+        if (resp.okuPersonel) {
+          this.navCtrl.push(AboutPage);
+        } else {
+          this.navCtrl.push(HomePage);
+        }
       } else {
         //this.alertConnexionError();
       }

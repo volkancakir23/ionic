@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Şoför</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -19,7 +19,6 @@
     <ion-item-group reorder="false" (ionItemReorder)="$event.applyTo(items)">
       <ion-item *ngFor="let item of items">
         <ion-label>{{item.ogrenci.isim}}</ion-label>
-        <ion-toggle primary [(ngModel)]=item.ulastiMi (ionChange)=onUpdateToggle(item)></ion-toggle>
         <ion-toggle primary [(ngModel)]=item.bindiMi (ionChange)=onUpdateToggle(item)></ion-toggle>
       </ion-item>
     </ion-item-group>
