@@ -30,7 +30,7 @@ export class OkuYolcuServiceProvider {
     }
     this.options = new RequestOptions({headers: this.headers, search: servis});
 
-    return this.http.get("http://localhost:8080/api/findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User", this.options)
+    return this.http.get("http://127.0.0.1:8080/api/findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User", this.options)
       .map(this.extractData);
 
   }
@@ -49,7 +49,7 @@ export class OkuYolcuServiceProvider {
     }
     this.options = new RequestOptions({headers: this.headers, search: sefer});
 
-    return this.http.get("http://localhost:8080/api/findOkuYolcuBySefer_Id", this.options)
+    return this.http.get("http://127.0.0.1:8080/api/findOkuYolcuBySefer_Id", this.options)
       .map(this.extractData);
 
   }
@@ -69,7 +69,7 @@ export class OkuYolcuServiceProvider {
     }
     this.options = new RequestOptions({headers: this.headers, search: servis});
 
-    return this.http.get("http://localhost:8080/api/findByPlakaQuery", this.options)
+    return this.http.get("http://127.0.0.1:8080/api/findByPlakaQuery", this.options)
       .map(this.extractData);
 
   }
@@ -93,7 +93,7 @@ export class OkuYolcuServiceProvider {
       headers: new Headers(headerDict),
     };
     let data = JSON.stringify(item);
-    this.http.put('http://localhost:8080/api/oku-yolcus', data, headerObj)
+    this.http.put('http://127.0.0.1:8080/api/oku-yolcus', data, headerObj)
       .map(res => res.json())
       .subscribe(res => {
         //alert("success "+res);

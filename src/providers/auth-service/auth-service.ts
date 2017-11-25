@@ -5,7 +5,7 @@ import {Observable}     from 'rxjs/Observable';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map'
 
-let apiUrl = "http://localhost:8080/api/";
+let apiUrl = "http://127.0.0.1:8080/api/";
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -15,7 +15,7 @@ let apiUrl = "http://localhost:8080/api/";
 @Injectable()
 export class AuthServiceProvider {
 
-  private baseUrl = 'http://localhost:8080/api/';
+  private baseUrl = 'http://127.0.0.1:8080/api/';
 
   constructor(public http: Http,
               public authHttp:AuthHttp) {
@@ -48,7 +48,7 @@ export class AuthServiceProvider {
 
     let options = new RequestOptions({headers: authHeader});
 
-    return this.http.get('http://localhost:8080/api/restricted', options)
+    return this.http.get('http://127.0.0.1:8080/api/restricted', options)
       .map(this.extractData)
       .catch(this.handleError);
   }

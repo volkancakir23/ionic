@@ -52,7 +52,7 @@ export class LoginPage {
         //localStorage.setItem('user_login', user_login);
         //this.goToHomePage();
         //this.navCtrl.push(HomePage);
-        debugger;
+
         if (resp.okuPersonel) {
           this.navCtrl.push(AboutPage);
         } else {
